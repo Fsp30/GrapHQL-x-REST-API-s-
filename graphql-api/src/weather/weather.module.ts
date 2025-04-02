@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
-import { WeatherService } from './weather.service';
-import { WeatherResolver } from './weather.resolver';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { WeatherResolver } from './weather.resolver';
+import { WeatherService } from './weather.service';
 
 @Module({
-  imports: [HttpModule, ConfigModule], 
-  providers: [WeatherService, WeatherResolver],
-  exports: [WeatherService],
+  imports: [HttpModule, ConfigModule],
+  providers: [WeatherResolver, WeatherService],
 })
 export class WeatherModule {}

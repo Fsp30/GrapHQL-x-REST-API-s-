@@ -1,0 +1,26 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Weather {
+  city: String!
+  temperature: Float!
+  feelsLike: Float!
+  minTemperature: Float!
+  maxTemperature: Float!
+  pressure: Float!
+  humidity: Float!
+  windSpeed: Float!
+  windDirection: Float!
+  visibility: Float!
+  description: String!
+  icon: String!
+  sunrise: String!
+  sunset: String!
+}
+
+type Query {
+  hello: String!
+  getWeather(city: String!): Weather!
+  getCityTemperature(city: String!): String!
+}
