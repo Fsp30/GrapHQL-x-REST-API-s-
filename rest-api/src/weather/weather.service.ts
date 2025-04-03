@@ -18,18 +18,18 @@ export class WeatherService {
   }
 
   async getWeather(city: string): Promise<any> {
+    console.log('Cidade recebida no backend:', city);
     const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}&units=metric&lang=pt_br`;
-
+  
     try {
       const response = await firstValueFrom(this.httpService.get(url));
       return response.data;
-    } catch (error) {
-      throw new HttpException(
-        'Erro ao obter dados do clima',
-        HttpStatus.BAD_REQUEST
-      );
+    } catch (err) {
+      console.error('Erro ao chamar OpenWeather:', err.response?.data || err.message);
+      throw new HttpException('Falha ao obter os dados', HttpStatus.BAD_REQUEST);
     }
   }
+  
 
   async getCityTemperature(city: string): Promise<{ city: string; temperature: number }> {
     const weatherData = await this.getWeather(city);
