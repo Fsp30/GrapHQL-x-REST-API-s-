@@ -1,1 +1,1 @@
-export class Weather {}
+export class Weather {};
